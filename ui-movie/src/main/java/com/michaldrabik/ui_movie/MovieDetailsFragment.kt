@@ -43,6 +43,7 @@ import com.michaldrabik.ui_base.BaseFragment
 import com.michaldrabik.ui_base.common.AppCountry
 import com.michaldrabik.ui_base.common.AppCountry.UNITED_STATES
 import com.michaldrabik.ui_base.common.WidgetsProvider
+import com.michaldrabik.ui_base.common.views.BadgeTextView
 import com.michaldrabik.ui_base.common.views.RateView
 import com.michaldrabik.ui_base.utilities.MessageEvent
 import com.michaldrabik.ui_base.utilities.extensions.addDivider
@@ -355,6 +356,7 @@ class MovieDetailsFragment : BaseFragment<MovieDetailsViewModel>(R.layout.fragme
         movieDetailsTitle.text = movie.title
         movieDetailsDescription.setTextIfEmpty(if (movie.overview.isNotBlank()) movie.overview else getString(R.string.textNoDescription))
         movieDetailsStatus.text = getString(movie.status.displayName)
+        renderGenres(movie.genres)
 
         val releaseDate =
           when {
@@ -369,8 +371,7 @@ class MovieDetailsFragment : BaseFragment<MovieDetailsViewModel>(R.layout.fragme
           releaseDate,
           country.toUpperCase(),
           movie.runtime.toString(),
-          getString(R.string.textMinutesShort),
-          renderGenres(movie.genres)
+          getString(R.string.textMinutesShort)
         )
         movieDetailsRating.text = String.format(ENGLISH, getString(R.string.textMovieVotes), movie.rating, movie.votes)
         movieDetailsCommentsButton.visible()
@@ -455,11 +456,19 @@ class MovieDetailsFragment : BaseFragment<MovieDetailsViewModel>(R.layout.fragme
     }
   }
 
-  private fun renderGenres(genres: List<String>) =
+  private fun renderGenres(genres: List<String>) {
+    movieDetailsGenresLayout.removeAllViews()
+    movieDetailsGenresLayout.visibleIf(genres.isNotEmpty())
     genres
-      .take(3)
+      .take(4)
       .mapNotNull { Genre.fromSlug(it) }
-      .joinToString(", ") { getString(it.displayName) }
+      .forEach {
+        val view = BadgeTextView(requireContext()).apply {
+          setText(it.displayName)
+        }
+        movieDetailsGenresLayout.addView(view)
+      }
+  }
 
   private fun renderRating(rating: RatingState) {
     movieDetailsRateButton.visibleIf(rating.rateLoading == false, gone = false)

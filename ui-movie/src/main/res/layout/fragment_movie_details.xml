@@ -85,7 +85,7 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="?attr/colorSeparator"
-        app:layout_constraintBottom_toTopOf="@id/movieDetailsExtraInfo"
+        app:layout_constraintBottom_toTopOf="@id/movieDetailsGenresLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movieDetailsImageGuideline"
@@ -102,12 +102,30 @@
         app:layout_constraintTop_toTopOf="@+id/movieDetailsImage"
         />
 
+      <LinearLayout
+        android:id="@+id/movieDetailsGenresLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spaceNormal"
+        android:layout_marginTop="@dimen/spaceNormal"
+        android:layout_marginEnd="@dimen/spaceNormal"
+        android:layout_marginBottom="@dimen/spaceMicro"
+        android:divider="@drawable/divider_genres"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        android:translationX="-1dp"
+        app:layout_constraintBottom_toTopOf="@id/movieDetailsExtraInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/separator1"
+        />
+
       <TextView
         android:id="@+id/movieDetailsExtraInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spaceNormal"
-        android:layout_marginTop="@dimen/spaceMedium"
+        android:layout_marginTop="@dimen/spaceTiny"
         android:layout_marginEnd="@dimen/spaceNormal"
         android:ellipsize="end"
         android:gravity="start"
@@ -119,8 +137,9 @@
         app:layout_constraintBottom_toTopOf="@id/movieDetailsStatus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/separator1"
-        tools:text="2019 (PL) | 126 min | Drama, SF, Horror"
+        app:layout_constraintTop_toBottomOf="@id/movieDetailsGenresLayout"
+        app:layout_goneMarginTop="@dimen/spaceMedium"
+        tools:text="2019 (PL) | 126 min"
         />
 
       <TextView
@@ -167,6 +186,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spaceNormal"
+        android:layout_marginTop="@dimen/spaceMicro"
         android:layout_marginEnd="@dimen/spaceNormal"
         app:layout_constraintBottom_toTopOf="@id/movieDetailsManageListsLabel"
         app:layout_constraintEnd_toEndOf="parent"

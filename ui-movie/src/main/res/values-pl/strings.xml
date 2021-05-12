@@ -13,7 +13,7 @@
   <string name="textMovieShare">Prześlij</string>
   <string name="textMovieYouMayAlsoLike">Zobacz również:</string>
   <string name="textMovieVotes">%.1f (%d ocen)</string>
-  <string name="textMovieExtraInfo">%s %s | %s %s | %s</string>
+  <string name="textMovieExtraInfo">%s %s | %s %s</string>
   <string name="textMovieNotYetReleased">Film nie miał jeszcze premiery.</string>
   <string name="textMovieManageLists">Zarządzaj listami</string>
   <string name="textMovieManageListsCount">Zarządzaj listami (%d)</string>
