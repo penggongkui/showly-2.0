@@ -11,9 +11,12 @@ import com.michaldrabik.data_local.database.model.Episode as EpisodeDb
 class CalendarRecentsFilter @Inject constructor() : CalendarFilter {
 
   override fun filter(now: ZonedDateTime, episode: EpisodeDb): Boolean {
+    val nowDays = now.truncatedTo(DAYS)
     val dateDays = episode.firstAired?.toLocalZone()?.truncatedTo(DAYS)
-    val isHistory = dateDays?.isBefore(now.truncatedTo(DAYS)) == true
-    val isLast3Months = dateDays?.isAfter(now.truncatedTo(DAYS).minusMonths(3)) == true
+
+    val isHistory = dateDays?.isBefore(nowDays) == true || dateDays?.isEqual(nowDays) == true
+    val isLast3Months = dateDays?.isAfter(nowDays.minusMonths(3)) == true
+
     return episode.seasonNumber != 0 && isHistory && isLast3Months
   }
 }
