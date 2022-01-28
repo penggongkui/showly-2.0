@@ -27,7 +27,6 @@ import com.michaldrabik.ui_progress.R
 import com.michaldrabik.ui_progress.progress.recycler.ProgressListItem
 import kotlinx.android.synthetic.main.view_progress_item.view.*
 import java.util.Locale.ENGLISH
-import kotlin.math.roundToInt
 
 @SuppressLint("SetTextI18n")
 class ProgressItemView : ShowView<ProgressListItem.Episode> {
@@ -98,13 +97,15 @@ class ProgressItemView : ShowView<ProgressListItem.Episode> {
   }
 
   private fun bindProgress(item: ProgressListItem.Episode) {
-    var percent = 0
-    if (item.totalCount != 0) {
-      percent = ((item.watchedCount.toFloat() / item.totalCount.toFloat()) * 100).roundToInt()
-    }
     progressItemProgress.max = item.totalCount
     progressItemProgress.progress = item.watchedCount
-    progressItemProgressText.text = String.format(ENGLISH, "%d/%d (%d%%)", item.watchedCount, item.totalCount, percent)
+
+    val episodesLeft = item.totalCount - item.watchedCount
+    if (episodesLeft > 0) {
+      progressItemProgressText.text = String.format(ENGLISH, "%d/%d (%d eps.)", item.watchedCount, item.totalCount, episodesLeft)
+    } else {
+      progressItemProgressText.text = String.format(ENGLISH, "%d/%d ", item.watchedCount, item.totalCount)
+    }
   }
 
   private fun bindCheckButton(
