@@ -113,5 +113,5 @@ dependencies {
   androidTestImplementation androidTestLibs.android.test.runner
 
   //  debugImplementation "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary"
-  coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$versions.androidDesugarLibs"
+  coreLibraryDesugaring libs.android.desugar
 }

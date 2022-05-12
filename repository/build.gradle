@@ -35,9 +35,9 @@ dependencies {
   implementation project(':data-local')
   implementation project(':ui-model')
 
-  implementation "androidx.core:core-ktx:$versions.androidKtx"
-  implementation "androidx.appcompat:appcompat:$versions.androidAppCompat"
-  implementation "com.jakewharton.timber:timber:$versions.timber"
+  implementation libs.android.core
+  implementation libs.android.appCompat
+  implementation libs.timber
 
   implementation libs.hilt.android
   kapt libs.hilt.compiler
@@ -45,5 +45,5 @@ dependencies {
   testImplementation testLibs.bundles.testing
   androidTestImplementation androidTestLibs.android.test.runner
 
-  coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$versions.androidDesugarLibs"
+  coreLibraryDesugaring libs.android.desugar
 }

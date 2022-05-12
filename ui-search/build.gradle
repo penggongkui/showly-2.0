@@ -48,5 +48,5 @@ dependencies {
   testImplementation testLibs.bundles.testing
   androidTestImplementation androidTestLibs.android.test.runner
 
-  coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$versions.androidDesugarLibs"
+  coreLibraryDesugaring libs.android.desugar
 }

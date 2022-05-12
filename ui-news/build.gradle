@@ -47,5 +47,5 @@ dependencies {
 
   implementation libs.android.browser
 
-  coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$versions.androidDesugarLibs"
+  coreLibraryDesugaring libs.android.desugar
 }
