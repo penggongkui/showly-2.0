@@ -22,21 +22,19 @@ dependencyResolutionManagement {
       library("phoenix", "com.jakewharton:process-phoenix:2.0.0")
       library("lingver", "com.github.YarikSOffice:lingver:1.3.0")
       library("circleIndicator", "me.relex:circleindicator:2.1.6")
+    }
 
-      // Testing
+    testLibs {
       library("junit", "junit:junit:4.13.2")
       library("mockk", "io.mockk:mockk:1.12.0")
       library("truth", "com.google.truth:truth:1.1.3")
       library("kotlin.coroutines.test", "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
       library("android.test.core", "androidx.arch.core:core-testing:2.1.0")
       bundle("testing", ["junit", "mockk", "truth", "kotlin.coroutines.test", "android.test.core"])
-
-      // Android Testing
-      library("android.test.runner", "androidx.test:runner:1.4.0")
     }
 
-    testLibs {
-
+    androidTestLibs {
+      library("android.test.runner", "androidx.test:runner:1.4.0")
     }
   }
 }
