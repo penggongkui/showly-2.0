@@ -1,4 +1,4 @@
-rootProject.name='Showly 2.0'
+rootProject.name = 'Showly 2.0'
 include ':ui-news'
 include ':ui-lists'
 include ':ui-premium'
@@ -26,3 +26,46 @@ include ':repository'
 include ':app', ':data-remote', ':data-local', ':common'
 include ':ui-streamings'
 include ':ui-people'
+
+dependencyResolutionManagement {
+  versionCatalogs {
+    libs {
+      version("hilt", "2.39")
+      library("hilt.plugin", "com.google.dagger", "hilt-android-gradle-plugin").versionRef("hilt")
+      library("hilt.android", "com.google.dagger", "hilt-android").versionRef("hilt")
+      library("hilt.compiler", "com.google.dagger", "hilt-compiler").versionRef("hilt")
+
+      version("hiltWork", "1.0.0")
+      library("hilt.work", "androidx.hilt", "hilt-work").versionRef("hiltWork")
+      library("hilt.work.compiler", "androidx.hilt", "hilt-compiler").versionRef("hiltWork")
+
+      version("navigation", "2.3.5")
+      library("android.navigation.fragment", "androidx.navigation", "navigation-fragment-ktx").versionRef("navigation")
+      library("android.navigation.ui", "androidx.navigation", "navigation-ui-ktx").versionRef("navigation")
+
+      library("android.appCompat", "androidx.appcompat:appcompat:1.3.1")
+      library("android.playCore", "com.google.android.play:core:1.10.3")
+      library("android.gridLayout", "androidx.gridlayout:gridlayout:1.0.0")
+      library("android.billing", "com.android.billingclient:billing-ktx:4.0.0")
+      library("android.browser", "androidx.browser:browser:1.3.0")
+      library("phoenix", "com.jakewharton:process-phoenix:2.0.0")
+      library("lingver", "com.github.YarikSOffice:lingver:1.3.0")
+      library("circleIndicator", "me.relex:circleindicator:2.1.6")
+
+      // Testing
+      library("junit", "junit:junit:4.13.2")
+      library("mockk", "io.mockk:mockk:1.12.0")
+      library("truth", "com.google.truth:truth:1.1.3")
+      library("kotlin.coroutines.test", "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
+      library("android.test.core", "androidx.arch.core:core-testing:2.1.0")
+      bundle("testing", ["junit", "mockk", "truth", "kotlin.coroutines.test", "android.test.core"])
+
+      // Android Testing
+      library("android.test.runner", "androidx.test:runner:1.4.0")
+    }
+
+    testLibs {
+
+    }
+  }
+}

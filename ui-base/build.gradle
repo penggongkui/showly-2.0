@@ -68,8 +68,8 @@ dependencies {
   api "com.github.bumptech.glide:glide:$versions.glide"
   kapt "com.github.bumptech.glide:compiler:$versions.glide"
 
-  implementation "com.google.dagger:hilt-android:$versions.hilt"
-  kapt "com.google.dagger:hilt-compiler:$versions.hilt"
+  implementation libs.hilt.android
+  kapt libs.hilt.compiler
   implementation "androidx.hilt:hilt-work:$versions.hiltWork"
   kapt "androidx.hilt:hilt-compiler:$versions.hiltCompiler"
 
